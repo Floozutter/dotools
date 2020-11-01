@@ -1,4 +1,2 @@
 PgUp::PrintScreen
-PgDn::
-	Run mspaint
-return
+PgDn::Run mspaint
