@@ -47,6 +47,7 @@ function enter_code(code)
 		if s ~= nil then
 			stylus.set(s)
 			emu.frameadvance()
+			emu.frameadvance()
 		end
 	end
 end
