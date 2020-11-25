@@ -50,6 +50,8 @@ function enter_code(code)
 			emu.frameadvance()
 		end
 	end
+	stylus.set{x=0, y=0, touch=true}
+	emu.frameadvance()
 end
 
 enter_code(CODE)
