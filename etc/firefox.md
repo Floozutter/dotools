@@ -1,4 +1,4 @@
-# Firefox Commands
+# Firefox
 ## Lichess Boardshot
 ```
 :screenshot --clipboard --selector ".main-board"
