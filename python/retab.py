@@ -21,19 +21,24 @@ def parse_args() -> Tuple[int, Tuple[str, ...]]:
         help = "name of file to retab"
     )
     args = parser.parse_args()
-    return args.tabstop, args.filename
+    return args.filename, args.tabstop
 
-def main(tabstop: int, filenames: Iterable[str]) -> None:
+def retab(filename: str, tabstop: int = 4) -> None:
+    with open(filename, "r+") as file:
+        text = file.read()
+        file.seek(0)
+        file.write(text.replace("\t", " " * tabstop))
+
+def main(filenames: Iterable[str], tabstop: int = 4) -> None:
     for filename in filenames:
         print(f'retabbing "{filename}"...', end = " ")
         try:
-            with open(filename, "r+") as file:
-                text = file.read()
-                file.seek(0)
-                file.write(text.replace("\t", " " * tabstop))
+            retab(filename, tabstop)
             print("done.")
         except FileNotFoundError:
-            print("file not found!")
+            print("error: file not found!")
+        except Exception as e:
+            print(f'unexpected error: "{e}"!')
 
 if __name__ == "__main__":
     main(*parse_args())
