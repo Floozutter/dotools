@@ -1,2 +1,2 @@
 # dotools
-Tools for doing things (preferably productive)
+tools for doing things (preferably productive)
