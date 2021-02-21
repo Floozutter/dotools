@@ -17,3 +17,11 @@ ffmpeg -i mclp-lab2.mp4 -filter:a "volume=4.0" out.mp4
 stolen from [here](https://trac.ffmpeg.org/wiki/AudioVolume)
 
 used [here](https://youtu.be/g0ekDsVZfao)
+
+## burn subtitles
+```
+ffmpeg -i mclp-lab3.mp4 -vf subtitles=front.srt out.mp4
+```
+stolen from [here](https://trac.ffmpeg.org/wiki/HowToBurnSubtitlesIntoVideo)
+
+used [here](https://youtu.be/Cnu2-CKAoQc)
