@@ -25,3 +25,11 @@ ffmpeg -i mclp-lab3.mp4 -vf subtitles=front.srt out.mp4
 stolen from [here](https://trac.ffmpeg.org/wiki/HowToBurnSubtitlesIntoVideo)
 
 used [here](https://youtu.be/Cnu2-CKAoQc)
+
+## transpose
+```
+ffmpeg -i owo.mp4 -vf "transpose=2" uwu.mp4
+```
+stolen from [here](https://stackoverflow.com/a/9570992)
+
+used [here](https://youtu.be/Fl8sh9ZEO1c)
