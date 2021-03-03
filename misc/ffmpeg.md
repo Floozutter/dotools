@@ -33,3 +33,11 @@ ffmpeg -i owo.mp4 -vf "transpose=2" uwu.mp4
 stolen from [here](https://stackoverflow.com/a/9570992)
 
 used [here](https://youtu.be/Fl8sh9ZEO1c)
+
+## gif from images
+```
+ffmpeg -i %d.png unknown.gif
+```
+stolen from [here](https://unix.stackexchange.com/a/24103)
+
+used to show off phased-bars
