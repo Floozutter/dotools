@@ -35,10 +35,8 @@ def main(filenames: Iterable[str], tabstop: int = 4) -> None:
         try:
             retab(filename, tabstop)
             print("done.")
-        except FileNotFoundError:
-            print("error: file not found!")
-        except Exception as e:
-            print(f'unexpected error: "{e}"!')
+        except OSError as e:
+            print(f'os error: "{e}"!')
 
 if __name__ == "__main__":
     main(*parse_args())
