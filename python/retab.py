@@ -31,12 +31,13 @@ def retab(filename: str, tabstop: int = 4) -> None:
 
 def main(filenames: Iterable[str], tabstop: int = 4) -> None:
     for filename in filenames:
-        print(f'retabbing "{filename}"...', end = " ")
+        print(f"retabbing `{filename}`...", end = " ")
         try:
-            retab(filename, tabstop)
-            print("done.")
+            retab(filename, tabstop)  
         except OSError as e:
-            print(f'os error: "{e}"!')
+            print(f"os error: `{e}`!")
+        else:
+            print("done.")
 
 if __name__ == "__main__":
     main(*parse_args())
