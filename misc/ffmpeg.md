@@ -41,3 +41,14 @@ ffmpeg -i %d.png unknown.gif
 stolen from [here](https://unix.stackexchange.com/a/24103)
 
 used to show off phased-bars
+
+## trim
+```
+ffmpeg -i mclp-lab6-pre.mkv -ss 00:00:04 -to 00:00:25 mclp-lab6.mkv
+```
+stolen from
+[here](https://www.arj.no/2018/05/18/trimvideo/)
+and
+[here](https://superuser.com/a/377407)
+
+used [here](https://youtu.be/Ez2xXMEVg40)
