@@ -18,8 +18,11 @@ def main(infiles: Iterable[str], outfile: str) -> int:
     # https://stackoverflow.com/a/2900266
     data: list[tuple[wave_params, bytes]] = []
     for infile in infiles:
+        print(f"reading from `{infile}`...", end = " ")
         with open_wave(infile, "rb") as iwave:
             data.append((iwave.getparams(), iwave.readframes(iwave.getnframes())))
+        print("done.")
+    print(f"writing to `{outfile}`...", end = " ")
     with open_wave(outfile, "wb") as owave:
         owave.setparams(data[0][0])
         for _, frames in data:
