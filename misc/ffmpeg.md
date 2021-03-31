@@ -52,3 +52,11 @@ and
 [here](https://superuser.com/a/377407)
 
 used [here](https://youtu.be/Ez2xXMEVg40)
+
+## re-encode as mp3
+```
+ffmpeg -i hi_this_is_healslug.mp3 -c:a libmp3lame -b:a 192k mikle-healslug.mp3
+```
+stolen from [here](https://askubuntu.com/a/1200496)
+
+used... where?
