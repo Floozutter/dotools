@@ -12,11 +12,11 @@ def parse_args() -> tuple[tuple[str, ...], str]:
     parser.add_argument("infile", nargs = "+", type = str, help = "input wav file to stitch")
     parser.add_argument("-o", "--outfile", type = str, required = True, help = "output wav file")
     args = parser.parse_args()
-    return tuple(args.infiles), outfile
+    return tuple(args.infile), args.outfile
 
 def main(infiles: Iterable[str], outfile: str) -> int:
     # https://stackoverflow.com/a/2900266
-    data: list[tuple[wave.wave_params, bytes]] = []
+    data: list[tuple[wave_params, bytes]] = []
     for infile in infiles:
         with open_wave(infile, "rb") as iwave:
             data.append((iwave.getparams(), iwave.readframes(iwave.getnframes())))
