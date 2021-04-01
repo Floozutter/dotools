@@ -27,3 +27,4 @@ git config user.email tarkitten@vesselnest.site
 git config --list
 git config --list --local
 ```
+4. [have fun!](https://opensource.com/article/19/7/create-pull-request-github)
