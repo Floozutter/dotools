@@ -1,0 +1,29 @@
+# Git
+## alt account
+[How to configure multiple Git accounts in your computer](https://blog.bitsrc.io/how-to-use-multiple-git-accounts-378ead121235)
+1. generate and [link](https://github.com/settings/keys) alt ssh key:
+```
+ssh-keygen -t rsa -C tarkitten@vesselnest.site
+cat ~/.ssh/tark_rsa.pub
+```
+2. append alt host to `~/.ssh/config`:
+```
+Host github-tark.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/tark_rsa
+```
+3. clone repo using alt host:
+```
+git clone git@github-tark.com:tarkitten/dotools.git
+```
+4. [edit local config](https://stackoverflow.com/a/42167480):
+```
+git config user.name tarkitten
+git config user.email tarkitten@vesselnest.site
+```
+3. [check global vs local config](https://stackoverflow.com/a/12254105):
+```
+git config --list
+git config --list --local
+```
