@@ -28,3 +28,8 @@ git config --list
 git config --list --local
 ```
 4. [have fun!](https://opensource.com/article/19/7/create-pull-request-github)
+
+## change email globally
+```
+git config --global user.email me@floozutter.site
+```
