@@ -60,3 +60,11 @@ ffmpeg -i hi_this_is_healslug.mp3 -c:a libmp3lame -b:a 192k mikle-healslug.mp3
 stolen from [here](https://askubuntu.com/a/1200496)
 
 used... where?
+
+## get video dimensions
+```
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 input.mkv
+```
+stolen from [here](https://superuser.com/a/841379)
+
+used to check Open Broadcaster Software output
