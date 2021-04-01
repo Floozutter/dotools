@@ -13,6 +13,10 @@ Host github-tark.com
   User git
   IdentityFile ~/.ssh/tark_rsa
 ```
+extra - [test ssh key](https://stackoverflow.com/a/47250227):
+```
+ssh -T git@github-tark.com
+```
 3. clone repo using alt host:
 ```
 git clone git@github-tark.com:tarkitten/dotools.git
