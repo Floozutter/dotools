@@ -2,7 +2,7 @@
 stitch multiple wav files together into one!
 """
 
-from wave import open as open_wave, _wave_params as wave_params
+import wave
 from argparse import ArgumentParser
 from sys import exit
 from typing import Iterable
@@ -16,18 +16,34 @@ def parse_args() -> tuple[tuple[str, ...], str]:
 
 def main(infiles: Iterable[str], outfile: str) -> int:
     # https://stackoverflow.com/a/2900266
-    data: list[tuple[wave_params, bytes]] = []
+    data: list[tuple[wave._wave_params, bytes]] = []
     for infile in infiles:
         print(f"reading from `{infile}`...", end = " ")
-        with open_wave(infile, "rb") as iwave:
-            data.append((iwave.getparams(), iwave.readframes(iwave.getnframes())))
-        print("done.")
+        try:
+            with wave.open(infile, "rb") as iwave:
+                data.append((iwave.getparams(), iwave.readframes(iwave.getnframes())))
+        except OSError as e:
+            print(f"os error: `{e}`!")
+            return 1
+        except wave.Error as e:
+            print(f"wav error: `{e}`!")
+            return 1
+        else:
+            print("done.")
     print(f"writing to `{outfile}`...", end = " ")
-    with open_wave(outfile, "wb") as owave:
-        owave.setparams(data[0][0])
-        for _, frames in data:
-            owave.writeframes(frames)
-    print("done.")
+    try:
+        with wave.open(outfile, "wb") as owave:
+            owave.setparams(data[0][0])
+            for _, frames in data:
+                owave.writeframes(frames)
+    except OSError as e:
+        print(f"os error: `{e}`!")
+        return 1
+    except wave.Error as e:
+        print(f"wav error: `{e}`!")
+        return 1
+    else:
+        print("done.")
     return 0
 
 if __name__ == "__main__":
