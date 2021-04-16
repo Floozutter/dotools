@@ -63,8 +63,8 @@ used... where?
 
 ## get video dimensions
 ```
-ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 input.mkv
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 sf4_market-bonking.mkv
 ```
 stolen from [here](https://superuser.com/a/841379)
 
-used to check Open Broadcaster Software output
+used to check Open Broadcaster Software output (like [here](https://youtu.be/0QOD1JOARog))
