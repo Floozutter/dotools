@@ -1,0 +1,12 @@
+here's how to manually scan for the sonar blur value in Cat Goes Fishing:
+- it's a double
+- less than or equal to 0 where there is no sonar blur visible
+- greater than or equal to 1 when there is only sonar blur visible
+- move towards and away from sources of sonar blur to scan for differences
+- move along multiple axes to filter out coordinate values
+- wait and scan for unchanged values before moving to next position for cleaner results
+
+i tried injecting some code to freeze the value at 0 but...
+the instructions that access it also access a lot of other addresses...
+so i got a lot of crashes...
+what a pain
