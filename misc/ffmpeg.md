@@ -71,10 +71,6 @@ used to check Open Broadcaster Software output (like [here](https://youtu.be/0QO
 
 ## fix volume
 ```
-ffmpeg -i Regan.cracked.exe.mp4 -vol 16384 -vcodec copy Regan.cracked.exe.mp4.out.mp4
-```
-or
-```
 ffmpeg -i Regan.cracked.exe.mp4 -vcodec copy -filter:a "volume=64" Regan.cracked.exe.mp4.out.mp4
 ```
 stolen from [here](https://superuser.com/q/31176)
