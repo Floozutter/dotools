@@ -1,5 +1,5 @@
 # ImageMagick
-## make color transparent
+## transparentize color
 ```
 magick convert sloppy-on-poppy-green.png -transparent rgb(0,255,0) sloppy-on-poppy.png
 ```
