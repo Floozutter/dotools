@@ -1,4 +1,4 @@
-#SingleInstance, Force
+#SingleInstance Force
 
 interfaceKeys := [1, 2, 3, 4, 5, 6]
 switchDelay := 20
