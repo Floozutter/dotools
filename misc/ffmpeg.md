@@ -12,11 +12,14 @@ and
 
 ## scale volume
 ```
-ffmpeg -i mclp-lab2.mp4 -filter:a "volume=4.0" out.mp4
+ffmpeg -i Regan.cracked.exe.mp4 -codec:v copy -filter:a "volume=64" Regan.cracked.exe.mp4.out.mp4
 ```
-stolen from [here](https://trac.ffmpeg.org/wiki/AudioVolume)
+stolen from
+[here](https://trac.ffmpeg.org/wiki/AudioVolume)
+and
+[here](https://superuser.com/a/1482140)
 
-used [here](https://youtu.be/g0ekDsVZfao)
+used to fix the volume on `Regan.cracked.exe.mp4` to `Regan.cracked.exe.mp4.out.mp4` (Regan popped off)
 
 ## burn subtitles
 ```
@@ -68,11 +71,3 @@ ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s
 stolen from [here](https://superuser.com/a/841379)
 
 used to check Open Broadcaster Software output (like [here](https://youtu.be/0QOD1JOARog))
-
-## fix volume
-```
-ffmpeg -i Regan.cracked.exe.mp4 -vcodec copy -filter:a "volume=64" Regan.cracked.exe.mp4.out.mp4
-```
-stolen from [here](https://superuser.com/q/31176)
-
-used to fix the volume on `Regan.cracked.exe.mp4` to `Regan.cracked.exe.mp4.out.mp4` (Regan popped off)
