@@ -1,7 +1,9 @@
 mod koy;
 use koy::Koy;
+use rdev::{EventType, listen, simulate};
 use std::thread;
 use std::sync::mpsc;
+use std::time::{Duration, Instant};
 use std::collections::HashSet;
 
 #[derive(PartialEq)]
@@ -13,7 +15,6 @@ enum State {
 }
 
 fn signal_from_listen(sender: mpsc::Sender<State>) -> Result<(), rdev::ListenError> {
-    use rdev::{EventType, listen};
     let mut held_koys = HashSet::<Koy>::new();
     listen(move |event| {
         let pressed_koy = match event.event_type {
@@ -69,14 +70,15 @@ fn main() {
     thread::spawn(|| {
         signal_from_listen(sender).unwrap();
     });
-    let period = std::time::Duration::from_millis(10);
+    let period = Duration::from_millis(20);
     let haperiod = period / 2;
     let mut state = State::Wait;
     loop {
         // transition state if signalled
         state = transition_from_signals(state, &receiver);
         // do state
-        use rdev::{EventType, simulate};
+        let start = Instant::now();
+        use rdev::Key as K;
         match state {
             State::Quit => {
                 println!("quitting!");
@@ -84,19 +86,20 @@ fn main() {
             },
             State::Wait => {
                 println!("...");
-                thread::sleep(period);
+                thread::sleep((start + period).saturating_duration_since(Instant::now()));
             },
             State::Hold => {
                 println!("holding...");
-                simulate(&EventType::KeyPress(rdev::Key::ShiftLeft)).unwrap();
-                thread::sleep(period);
+                simulate(&EventType::KeyPress(K::ShiftLeft)).unwrap();
+                thread::sleep((start + period).saturating_duration_since(Instant::now()));
             },
             State::Spam => {
                 println!("spamming...");
-                simulate(&EventType::KeyPress(rdev::Key::ShiftLeft)).unwrap();
-                thread::sleep(haperiod);
-                simulate(&EventType::KeyRelease(rdev::Key::ShiftLeft)).unwrap();
-                thread::sleep(haperiod);
+                simulate(&EventType::KeyPress(K::ShiftLeft)).unwrap();
+                thread::sleep((start + haperiod).saturating_duration_since(Instant::now()));
+                let middle = Instant::now();
+                simulate(&EventType::KeyRelease(K::ShiftLeft)).unwrap();
+                thread::sleep((middle + haperiod).saturating_duration_since(Instant::now()));
             },
         }
     }
