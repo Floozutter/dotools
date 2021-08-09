@@ -6,6 +6,7 @@ pub struct Koy(pub rdev::Key);
 
 impl Eq for Koy {}
 
+#[allow(clippy::derive_hash_xor_eq)]
 impl Hash for Koy {
     fn hash<H: Hasher>(&self, state: &mut H) {
         discriminant(&self.0).hash(state);
