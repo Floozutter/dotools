@@ -41,6 +41,6 @@ git config --global user.email me@floozutter.site
 ## edit AuthorDate and CommitDate
 [source: "How can one change the timestamp of an old commit in Git?" on Stack Overflow](https://stackoverflow.com/questions/454734)
 ```
-t="Sat Aug 14 17:37:57 2021 -0700"
+t="date"
 GIT_COMMITTER_DATE="$t" git commit --amend --no-edit --date "$t"
 ```
