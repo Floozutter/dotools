@@ -1,6 +1,6 @@
 # Git
 ## alt account
-[Source: "How to configure multiple Git accounts in your computer" by Abhay Srivastav.](https://blog.bitsrc.io/how-to-use-multiple-git-accounts-378ead121235)
+[source: "How to configure multiple Git accounts in your computer" by Abhay Srivastav](https://blog.bitsrc.io/how-to-use-multiple-git-accounts-378ead121235)
 1. generate and [link](https://github.com/settings/keys) alt ssh key:
 ```
 ssh-keygen -t rsa -C tarkitten@vesselnest.site
@@ -33,7 +33,14 @@ git config --list --local
 ```
 4. [have fun!](https://opensource.com/article/19/7/create-pull-request-github)
 
-## change email globally
+## edit email globally
 ```
 git config --global user.email me@floozutter.site
+```
+
+## edit AuthorDate and CommitDate
+[source: "How can one change the timestamp of an old commit in Git?" on Stack Overflow](https://stackoverflow.com/questions/454734)
+```
+t="Sat Aug 14 17:37:57 2021 -0700"
+GIT_COMMITTER_DATE="$t" git commit --amend --no-edit --date "$t"
 ```
