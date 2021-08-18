@@ -1,5 +1,6 @@
 from pyquery import PyQuery
 from pathlib import Path
+from argparse import ArgumentParser
 from typing import NamedTuple
 
 class Tab(NamedTuple):
@@ -13,8 +14,14 @@ def read_page(doc: PyQuery) -> tuple[Tab, ...]:
         for a in anchors
     )
 
+def parse_args() -> Path:
+    parser = ArgumentParser()
+    parser.add_argument("rootpath", nargs = "?", type = Path, default = Path())
+    return parser.parse_args().rootpath
+
 if __name__ == "__main__":
-    pagepaths = tuple(Path().rglob("*.html"))
+    rootpath = parse_args()
+    pagepaths = tuple(rootpath.rglob("*.html"))
     data = tuple(
         tab
         for path in pagepaths
