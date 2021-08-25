@@ -9,7 +9,9 @@ def parse_args() -> Path:
     return parser.parse_args().rootpath
 
 def main(paths: Iterable[Path]) -> None:
-    pass
+    print("crunchcating...")
+    for p in paths:
+        print(f"- {p}")
 
 if __name__ == "__main__":
     main(parse_args().rglob("*"))
