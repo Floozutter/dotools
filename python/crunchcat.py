@@ -5,15 +5,21 @@ from typing import Iterable
 
 def parse_args() -> Path:
     parser = ArgumentParser()
-    parser.add_argument("rootpath", nargs = "?", type = Path, default = Path())
-    return parser.parse_args().rootpath
+    parser.add_argument("rootpath", nargs = "?", default = Path(), type = Path)
+    parser.add_argument("-o", "--output", type = Path, required = True)
+    args = parser.parse_args()
+    return args.rootpath.rglob("*"), args.output
 
-def main(paths: Iterable[Path]) -> None:
+def main(paths: Iterable[Path], output: Path) -> None:
     paths = tuple(paths)
     print("crunchcating...")
     for p in paths:
         print(f"- {p}")
-    ffmpeg.concat(*(ffmpeg.input(p) for p in paths)).output("out.webm").run()
+    ffmpeg.concat(
+        *(ffmpeg.input(p) for p in paths)
+    ).output(
+        str(output.with_suffix(output.suffix + ".webm"))
+    ).run()
 
 if __name__ == "__main__":
-    main(parse_args().rglob("*"))
+    main(*parse_args())
