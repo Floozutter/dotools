@@ -12,9 +12,6 @@ def parse_args() -> Path:
 
 def main(paths: Iterable[Path], output: Path) -> None:
     paths = tuple(paths)
-    print("crunchcating...")
-    for p in paths:
-        print(f"- {p}")
     ffmpeg.concat(
         *(ffmpeg.input(p) for p in paths)
     ).output(
