@@ -27,4 +27,4 @@ if __name__ == "__main__":
         for path in pagepaths
         for tab in read_page(PyQuery(path.read_text()))
     )
-    print(f"{len(data)} tabs read.")
+    print(f"{len(data)} tabs read into variable `data`.")
