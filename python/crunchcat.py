@@ -11,7 +11,6 @@ def parse_args() -> Path:
     return args.rootpath.rglob("*"), args.output
 
 def main(paths: Iterable[Path], output: Path) -> None:
-    paths = tuple(paths)
     ffmpeg.concat(
         *(ffmpeg.input(p) for p in paths)
     ).output(
