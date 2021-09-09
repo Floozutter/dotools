@@ -14,7 +14,7 @@ def main(paths: Iterable[Path], output: Path) -> None:
     ffmpeg.concat(
         *(ffmpeg.input(p) for p in paths)
     ).output(
-        str(output.with_suffix(output.suffix + ".webm"))
+        str(output) + ".webm"
     ).run()
 
 if __name__ == "__main__":
