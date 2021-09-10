@@ -1,7 +1,17 @@
 import ffmpeg
 from argparse import ArgumentParser
 from pathlib import Path
-from typing import Iterable
+from typing import TypeVar, Iterable, Iterator
+
+T = TypeVar("T")
+def interleave(*iterables: Iterable[T]) -> Iterator[T]:
+    return (value for group in zip(*iterables) for value in group)
+
+def crunch_video(inp):
+    return inp.video
+
+def crunch_audio(inp):
+    return inp.audio
 
 def parse_args() -> Path:
     parser = ArgumentParser()
@@ -11,8 +21,12 @@ def parse_args() -> Path:
     return args.rootpath.rglob("*"), args.output
 
 def main(paths: Iterable[Path], output: Path) -> None:
+    inps = tuple(ffmpeg.input(p) for p in paths)
+    vids = tuple(map(crunch_video, inps))
+    auds = tuple(map(crunch_audio, inps))
     ffmpeg.concat(
-        *(ffmpeg.input(p) for p in paths)
+        *interleave(vids, auds),
+        v = 1, a = 1
     ).output(
         str(output) + ".webm"
     ).run()
