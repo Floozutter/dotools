@@ -8,7 +8,7 @@ def interleave(*iterables: Iterable[T]) -> Iterator[T]:
     return (value for group in zip(*iterables) for value in group)
 
 def crunch_video(stream):
-    return stream.video
+    return stream.video.filter("scale", 128, 72)
 
 def crunch_audio(stream):
     return stream.audio
