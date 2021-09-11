@@ -7,11 +7,11 @@ T = TypeVar("T")
 def interleave(*iterables: Iterable[T]) -> Iterator[T]:
     return (value for group in zip(*iterables) for value in group)
 
-def crunch_video(inp):
-    return inp.video
+def crunch_video(stream):
+    return stream.video
 
-def crunch_audio(inp):
-    return inp.audio
+def crunch_audio(stream):
+    return stream.audio
 
 def parse_args() -> Path:
     parser = ArgumentParser()
