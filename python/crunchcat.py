@@ -28,12 +28,20 @@ def main(paths: Iterable[Path], output: Path) -> None:
     inps = tuple(ffmpeg.input(p) for p in paths)
     vids = tuple(map(crunch_video, inps))
     auds = tuple(map(crunch_audio, inps))
-    ffmpeg.concat(
+    command = ffmpeg.concat(
         *interleave(vids, auds),
         v = 1, a = 1
     ).output(
-        str(output) + ".webm"
-    ).run()
+        str(output) + ".webm",
+        format = "webm",
+        vcodec = "libaom-av1",
+        video_bitrate = 1000,
+        acodec = "libopus",
+        audio_bitrate = 4000,
+        cutoff = 4000
+    )
+    print(command.compile())
+    command.run()
 
 if __name__ == "__main__":
     main(*parse_args())
