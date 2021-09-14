@@ -35,6 +35,7 @@ def main(paths: Iterable[Path], output: Path) -> None:
         str(output) + ".webm",
         format = "webm",
         vcodec = "libaom-av1",
+        crf = 63,
         video_bitrate = 1000,
         acodec = "libopus",
         audio_bitrate = 4000,
