@@ -41,7 +41,7 @@ def main(pitches: Iterable[float], duration: float, volume: float, out: Path) ->
         owave.setsampwidth(WIDTH)
         owave.setframerate(RATE)
         for sample in samples:
-            value = int(MAX_VALUE * sample)
+            value = max(min(int(MAX_VALUE * sample), MAX_VALUE), -MAX_VALUE)
             owave.writeframes(pack("<h", value))
     return voices
 
