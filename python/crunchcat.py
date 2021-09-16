@@ -10,7 +10,7 @@ def interleave(*iterables: Iterable[T]) -> Iterator[T]:
 def crunch_video(stream):
     return (
         stream.video
-            .filter("scale", 128, 72)
+            .filter("scale", 64, 32)
             .filter("fps", fps = 4)
     )
 
