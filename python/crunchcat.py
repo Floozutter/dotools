@@ -25,7 +25,7 @@ def parse_args() -> Path:
     return args.rootpath.rglob("*"), args.output
 
 def main(paths: Iterable[Path], output: Path) -> None:
-    inps = tuple(ffmpeg.input(p) for p in paths)
+    inps = tuple(map(ffmpeg.input, paths))
     vids = tuple(map(crunch_video, inps))
     auds = tuple(map(crunch_audio, inps))
     command = ffmpeg.concat(
