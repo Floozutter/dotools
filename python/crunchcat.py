@@ -41,7 +41,7 @@ def main(paths: Iterable[Path], output: Path) -> None:
         audio_bitrate = 4000,
         cutoff = 4000
     )
-    print(command.compile())
+    # to-do: 2-pass
     command.run()
 
 if __name__ == "__main__":
