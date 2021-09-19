@@ -17,12 +17,12 @@ def crunch_video(stream):
 def crunch_audio(stream):
     return stream.audio
 
-def parse_args() -> Path:
+def parse_args() -> tuple[tuple[Path, ...], Path]:
     parser = ArgumentParser()
     parser.add_argument("rootpath", nargs = "?", default = Path(), type = Path)
     parser.add_argument("-o", "--output", type = Path, required = True)
     args = parser.parse_args()
-    return args.rootpath.rglob("*"), args.output
+    return tuple(args.rootpath.rglob("*")), args.output
 
 def main(paths: Iterable[Path], output: Path) -> None:
     inps = tuple(map(ffmpeg.input, paths))
