@@ -13,7 +13,7 @@ WIDTH = 2
 MAX_VALUE = 2**(8*WIDTH - 1) - 1
 RATE = 44100
 
-def parse_args() -> tuple[tuple[float, ...], Path]:
+def parse_args() -> tuple[tuple[float, ...], float, float, Path]:
     parser = ArgumentParser(description = __doc__)
     parser.add_argument("pitches", nargs = "+", type = float)
     parser.add_argument("-d", "--duration", type = float, default = 1)
@@ -43,7 +43,6 @@ def main(pitches: Iterable[float], duration: float, volume: float, out: Path) ->
         for sample in samples:
             value = max(min(int(MAX_VALUE * sample), MAX_VALUE), -MAX_VALUE)
             owave.writeframes(pack("<h", value))
-    return voices
 
 if __name__ == "__main__":
     main(*parse_args())
