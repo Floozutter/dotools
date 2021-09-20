@@ -22,7 +22,7 @@ def parse_args() -> tuple[tuple[float, ...], float, float, Path]:
     args = parser.parse_args()
     if args.duration < 0:
         parser.error("argument -d/--duration: must be nonnegative")
-    elif args.volume < 0 or args.volume > 1:
+    elif not 0 <= args.volume <= 1:
         parser.error("argument -v/--volume: must be in [0, 1]")
     else:
         return tuple(args.pitches), args.duration, args.volume, args.outpath
