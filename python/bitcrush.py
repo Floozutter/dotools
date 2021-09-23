@@ -1,7 +1,9 @@
-def parse_args() -> tuple:
-    return ()
+from pathlib import Path
 
-def main() -> None:
+def parse_args() -> tuple[Path, Path]:
+    return Path(), Path()
+
+def main(iwavepath: Path, owavePath: Path) -> None:
     pass
 
 if __name__ == "__main__":
