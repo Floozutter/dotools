@@ -18,7 +18,7 @@ def parse_args() -> tuple[tuple[float, ...], float, float, Path]:
     parser.add_argument("pitches", nargs = "+", type = float)
     parser.add_argument("-d", "--duration", type = float, default = 1)
     parser.add_argument("-v", "--volume", type = float, default = 0.5)
-    parser.add_argument("-o", "--outpath", type = str, required = True)
+    parser.add_argument("-o", "--outpath", type = Path, required = True)
     args = parser.parse_args()
     if args.duration < 0:
         parser.error("argument -d/--duration: must be nonnegative")
@@ -36,7 +36,7 @@ def main(pitches: Iterable[float], duration: float, volume: float, out: Path) ->
         for pitch in pitches
     )
     samples = tuple(map(sum, zip(*voices)))
-    with wave.open(str(out), "w") as owave:
+    with wave.open(str(out.with_suffix(".wav")), "w") as owave:
         owave.setnchannels(1)
         owave.setsampwidth(WIDTH)
         owave.setframerate(RATE)
