@@ -4,8 +4,8 @@ synthesize sine waves into a chord!
 
 import wave
 import math
-from pathlib import Path
 from argparse import ArgumentParser
+from pathlib import Path
 from struct import pack
 from typing import Iterable
 
