@@ -2,6 +2,7 @@
 bitcrush WAVE files!
 """
 
+import wave
 from argparse import ArgumentParser
 from pathlib import Path
 
