@@ -32,7 +32,7 @@ def main(paths: Iterable[Path], output: Path) -> None:
         *interleave(vids, auds),
         v = 1, a = 1
     ).output(
-        str(output) + ".webm",
+        str(output.with_suffix(".webm")),
         format = "webm",
         vcodec = "libaom-av1",
         crf = 63,
