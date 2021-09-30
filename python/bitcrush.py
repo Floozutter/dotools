@@ -14,6 +14,8 @@ def parse_args() -> tuple[Path, Path]:
     return args.iwavepath, args.owavepath
 
 def main(iwavepath: Path, owavepath: Path) -> None:
+    with wave.open(str(iwavepath, "r")) as iwave:
+        pass
     with wave.open(str(owavepath.with_suffix(".wav")), "w") as owave:
         pass
 
