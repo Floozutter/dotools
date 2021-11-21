@@ -1,5 +1,5 @@
 # Git
-## alt account
+## alt identity
 [source: "How to configure multiple Git accounts in your computer" by Abhay Srivastav](https://blog.bitsrc.io/how-to-use-multiple-git-accounts-378ead121235)
 1. generate and [link](https://github.com/settings/keys) alt ssh key:
 ```
